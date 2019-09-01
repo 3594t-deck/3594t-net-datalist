@@ -1,4 +1,5 @@
 node_modules/
+.circleci/
 .editorconfig
 .eslint*
 .gitignore
