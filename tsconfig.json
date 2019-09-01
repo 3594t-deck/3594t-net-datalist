@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "es2015",
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules"]
+}

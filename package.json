@@ -1,0 +1,28 @@
+{
+  "name": "@boushi-bird/3594t-net-datalist",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.d.js",
+  "scripts": {
+    "lint:ts": "tsc --noEmit",
+    "lint:es": "eslint --ext .ts ."
+  },
+  "author": "boushi-bird <boushi-bird@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boushi-bird/3594t-net-datalist.git"
+  },
+  "dependencies": {
+    "type-fest": ">=0.7.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.2"
+  }
+}
