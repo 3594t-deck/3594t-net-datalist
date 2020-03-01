@@ -2,10 +2,19 @@
   "name": "@boushi-bird/3594t-net-datalist",
   "version": "0.0.2",
   "description": "",
-  "main": "index.d.js",
+  "main": "index.d.ts",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "index.d.ts",
+    "read-only.d.ts",
+    "lib"
+  ],
   "scripts": {
     "lint:ts": "tsc --noEmit",
-    "lint:es": "eslint --ext .ts ."
+    "lint:es": "eslint --ext .ts .",
+    "test": "tsd && jest"
   },
   "author": "boushi-bird <boushi-bird@users.noreply.github.com>",
   "license": "MIT",
@@ -17,12 +26,25 @@
     "type-fest": ">=0.10.0"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.3",
+    "@types/node-fetch": "^2.5.5",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "node-fetch": "^2.6.0",
     "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "tsd": "^0.11.0",
     "typescript": "^3.7.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/test-d/"
+    ]
   }
 }

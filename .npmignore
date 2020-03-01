@@ -1,9 +1,0 @@
-node_modules/
-.circleci/
-.editorconfig
-.eslint*
-.gitignore
-.prettierrc.yml
-.npm*
-package-lock.json
-tsconfig.json

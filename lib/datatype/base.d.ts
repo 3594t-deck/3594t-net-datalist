@@ -1,9 +1,3 @@
-interface Enishi {
-  fire_10t: string;
-  hire: string;
-  rarity: string;
-}
-
 interface ExRank {
   code: string;
   count: string;
@@ -13,6 +7,7 @@ interface ExRank {
 
 interface General {
   add_version: string;
+  avatar: string;
   belong: number;
   buryoku: string;
   chiryoku: string;
@@ -27,7 +22,9 @@ interface General {
   major_version: string;
   not_belong: boolean;
   personal: string;
+  pocket_avatar: string;
   pocket_code: string;
+  pocket_off: boolean;
   rarity: string;
   seiatsu: string;
   skill0: string;
@@ -138,7 +135,6 @@ export interface BaseData {
     [key: number]: { code: string; name: string };
   };
   DATA: { code: string }[];
-  ENISHI: Enishi[];
   EXT: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   EX_RANK: ExRank[];
   GENERAL: General[];
@@ -147,6 +143,8 @@ export interface BaseData {
   GEN_SUB: GenSub[];
   ILLUSTRATOR: Illustrator[];
   /* eslint-disable @typescript-eslint/no-explicit-any */
+  ITEM_IMG: any[];
+  ITEM_NAME: any[];
   PARAM: any[];
   PASSIVE_JEWEL: any[];
   PATH: any[];
@@ -155,6 +153,7 @@ export interface BaseData {
   RARITY: {
     [key: string]: { code: string; name: string };
   };
+  RATE: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   SKILL: Skill[];
   STATE: State[];
   STRAT: Strat[];
@@ -162,6 +161,7 @@ export interface BaseData {
   STRAT_RANGE: StratRange[];
   STRAT_TIME: StratTime[];
   TACTICS: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  TITLE_GENERAL: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   UNIT_TYPE: UnitType[];
   VER_TYPE: VerType[];
   VOICE_ACTOR: VoiceActor[];
