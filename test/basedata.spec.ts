@@ -18,6 +18,9 @@ describe('BaseData', () => {
   const KEYS: DataKey[] = [
     'ACTIVE_JEWEL',
     'ACTIVE_JEWEL_TYPE',
+    'ASSIST',
+    'ASSIST_STRAT',
+    'ASSIST_STRAT_CATEGORY',
     'BGM',
     'COST',
     'DATA',
@@ -26,6 +29,7 @@ describe('BaseData', () => {
     'GENERAL',
     'GENERAL_TYPE',
     'GEN_MAIN',
+    'GEN_MAIN_SP',
     'GEN_SUB',
     'ILLUSTRATOR',
     'ITEM_IMG',
@@ -36,6 +40,7 @@ describe('BaseData', () => {
     'PERSONAL',
     'RARITY',
     'RATE',
+    'PLAYER',
     'SKILL',
     'STATE',
     'STRAT',
@@ -108,9 +113,18 @@ describe('BaseData["GENERAL"]', () => {
     'voice_actor',
   ];
 
+  const IGNORE_KEYS: string[] = [
+    'belong',
+    'ex_rank',
+    'not_belong',
+    'master_player',
+  ];
+
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter(
+        key => !IGNORE_KEYS.includes(key) && d[key] == null
+      );
       expect(keys).toEqual([]);
     }
   });
@@ -118,7 +132,7 @@ describe('BaseData["GENERAL"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -126,7 +140,9 @@ describe('BaseData["GENERAL"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter(
+        key => !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
+      );
       expect(keys).toEqual([]);
     }
   });
@@ -194,6 +210,7 @@ describe('BaseData["RARITY"]', () => {
       expect(data[key]).toEqual({
         code: expect.any(String),
         name: expect.any(String),
+        order: expect.any(Number),
       });
     }
   });
@@ -206,7 +223,40 @@ describe('BaseData["GEN_MAIN"]', () => {
     data = baseData.GEN_MAIN;
   });
   type DataKey = keyof DataType[number];
-  const KEYS: DataKey[] = ['code', 'key', 'name', 'name_short'];
+  const KEYS: DataKey[] = ['code', 'key', 'name', 'name_short', 'replace'];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["GEN_MAIN_SP"]', () => {
+  type DataType = BaseData['GEN_MAIN_SP'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.GEN_MAIN;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['code', 'key', 'name', 'name_short', 'replace'];
 
   test('no data', async () => {
     for (const d of data) {

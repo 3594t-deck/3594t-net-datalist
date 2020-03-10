@@ -48,6 +48,15 @@ interface GenMain {
   key: string;
   name: string;
   name_short: string;
+  replace: string;
+}
+
+interface GenMainSp {
+  code: string;
+  key: string;
+  name: string;
+  name_short: string;
+  replace: string;
 }
 
 interface GenSub {
@@ -129,6 +138,9 @@ export interface BaseData {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   ACTIVE_JEWEL: any[];
   ACTIVE_JEWEL_TYPE: any[];
+  ASSIST: any;
+  ASSIST_STRAT: any;
+  ASSIST_STRAT_CATEGORY: any;
   BGM: any[];
   /* eslint-enable @typescript-eslint/no-explicit-any */
   COST: {
@@ -140,6 +152,7 @@ export interface BaseData {
   GENERAL: General[];
   GENERAL_TYPE: GeneralType[];
   GEN_MAIN: GenMain[];
+  GEN_MAIN_SP: GenMainSp[];
   GEN_SUB: GenSub[];
   ILLUSTRATOR: Illustrator[];
   /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -150,8 +163,9 @@ export interface BaseData {
   PATH: any[];
   /* eslint-enable @typescript-eslint/no-explicit-any */
   PERSONAL: Personal[];
+  PLAYER: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   RARITY: {
-    [key: string]: { code: string; name: string };
+    [key: string]: { code: string; name: string; order: number };
   };
   RATE: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   SKILL: Skill[];
