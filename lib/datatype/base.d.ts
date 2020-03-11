@@ -146,7 +146,7 @@ export interface BaseData {
   COST: {
     [key: number]: { code: string; name: string };
   };
-  DATA: { code: string }[];
+  // DATA: { code: string }[];
   EXT: { [key: string]: string }[];
   EX_RANK: ExRank[];
   GENERAL: General[];

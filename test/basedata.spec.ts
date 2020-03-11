@@ -16,7 +16,6 @@ describe('BaseData', () => {
   });
   type DataKey = keyof BaseData;
   const KEYS: DataKey[] = [
-    'DATA',
     'ACTIVE_JEWEL',
     'ACTIVE_JEWEL_TYPE',
     'ASSIST',
@@ -53,7 +52,7 @@ describe('BaseData', () => {
     'VOICE_ACTOR',
   ];
 
-  const IGNORE_KEYS: string[] = ['PLAYER'];
+  const IGNORE_KEYS: string[] = ['DATA', 'PLAYER'];
 
   test('no data', async () => {
     const keys = KEYS.filter(key => !data[key]);
