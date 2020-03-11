@@ -196,6 +196,27 @@ describe('BaseData["COST"]', () => {
       });
     }
   });
+
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['code', 'name'];
+
+  test('added keys', async () => {
+    for (const k in data) {
+      const d = data[k];
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const k in data) {
+      const d = data[k];
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
 });
 
 describe('BaseData["RARITY"]', () => {
@@ -212,6 +233,27 @@ describe('BaseData["RARITY"]', () => {
         name: expect.any(String),
         order: expect.any(Number),
       });
+    }
+  });
+
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['code', 'name', 'order'];
+
+  test('added keys', async () => {
+    for (const k in data) {
+      const d = data[k];
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const k in data) {
+      const d = data[k];
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
     }
   });
 });
