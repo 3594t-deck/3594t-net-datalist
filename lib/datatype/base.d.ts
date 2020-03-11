@@ -147,7 +147,7 @@ export interface BaseData {
     [key: number]: { code: string; name: string };
   };
   DATA: { code: string }[];
-  EXT: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  EXT: { [key: string]: string }[];
   EX_RANK: ExRank[];
   GENERAL: General[];
   GENERAL_TYPE: GeneralType[];
@@ -160,10 +160,10 @@ export interface BaseData {
   ITEM_NAME: any[];
   PARAM: any[];
   PASSIVE_JEWEL: any[];
-  PATH: any[];
+  PATH: { [key: string]: string }[];
   /* eslint-enable @typescript-eslint/no-explicit-any */
   PERSONAL: Personal[];
-  PLAYER: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  // PLAYER: any;
   RARITY: {
     [key: string]: { code: string; name: string; order: number };
   };

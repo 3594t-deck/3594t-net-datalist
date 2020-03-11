@@ -16,6 +16,7 @@ describe('BaseData', () => {
   });
   type DataKey = keyof BaseData;
   const KEYS: DataKey[] = [
+    'DATA',
     'ACTIVE_JEWEL',
     'ACTIVE_JEWEL_TYPE',
     'ASSIST',
@@ -23,7 +24,6 @@ describe('BaseData', () => {
     'ASSIST_STRAT_CATEGORY',
     'BGM',
     'COST',
-    'DATA',
     'EXT',
     'EX_RANK',
     'GENERAL',
@@ -40,7 +40,6 @@ describe('BaseData', () => {
     'PERSONAL',
     'RARITY',
     'RATE',
-    'PLAYER',
     'SKILL',
     'STATE',
     'STRAT',
@@ -54,6 +53,8 @@ describe('BaseData', () => {
     'VOICE_ACTOR',
   ];
 
+  const IGNORE_KEYS: string[] = ['PLAYER'];
+
   test('no data', async () => {
     const keys = KEYS.filter(key => !data[key]);
     expect(keys).toEqual([]);
@@ -61,18 +62,69 @@ describe('BaseData', () => {
 
   test('added keys', async () => {
     const keys = Object.keys(data).filter(
-      key => !(KEYS as string[]).includes(key)
+      key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
     );
     expect(keys).toEqual([]);
   });
 
   test('deleted keys', async () => {
-    const keys = KEYS.filter(key => !Object.keys(data).includes(key));
+    const keys = KEYS.filter(
+      key => !IGNORE_KEYS.includes(key) && !Object.keys(data).includes(key)
+    );
     expect(keys).toEqual([]);
   });
 });
 
-// TODO: ExRank
+describe('BaseData["EXT"]', () => {
+  type DataType = BaseData['EXT'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.EXT;
+  });
+
+  test('no data', async () => {
+    expect(data[0]).not.toBeFalsy();
+  });
+
+  test('format', async () => {
+    for (const d in data[0]) {
+      expect(d).toEqual(expect.any(String));
+    }
+  });
+});
+
+describe('BaseData["EX_RANK"]', () => {
+  type DataType = BaseData['EX_RANK'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.EX_RANK;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['code', 'count', 'key', 'name'];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
 
 describe('BaseData["GENERAL"]', () => {
   type DataType = BaseData['GENERAL'];
@@ -419,6 +471,24 @@ describe('BaseData["PERSONAL"]', () => {
     for (const d of data) {
       const keys = KEYS.filter(key => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["PATH"]', () => {
+  type DataType = BaseData['PATH'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.EXT;
+  });
+
+  test('no data', async () => {
+    expect(data[0]).not.toBeFalsy();
+  });
+
+  test('format', async () => {
+    for (const d in data[0]) {
+      expect(d).toEqual(expect.any(String));
     }
   });
 });
