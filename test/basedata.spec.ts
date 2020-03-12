@@ -74,6 +74,134 @@ describe('BaseData', () => {
   });
 });
 
+describe('BaseData["ASSIST"]', () => {
+  type DataType = BaseData['ASSIST'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.ASSIST;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = [
+    'add_version',
+    'assist_strat',
+    'avatar',
+    'code',
+    'illustrator',
+    'major_version',
+    'personal',
+    'state',
+    'voice_actor',
+  ];
+
+  const IGNORE_KEYS: string[] = [
+    'belong',
+    'ex_rank',
+    'not_belong',
+    'master_player',
+  ];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(
+        key => !IGNORE_KEYS.includes(key) && d[key] == null
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(
+        key => !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["ASSIST_STRAT"]', () => {
+  type DataType = BaseData['ASSIST_STRAT'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.ASSIST_STRAT;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = [
+    'assist_strat_category',
+    'code',
+    'explanation',
+    'key',
+    'name',
+    'name_ruby',
+    'strat_range',
+  ];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["ASSIST_STRAT_CATEGORY"]', () => {
+  type DataType = BaseData['ASSIST_STRAT_CATEGORY'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.ASSIST_STRAT_CATEGORY;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['code', 'key', 'name'];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        key => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
 describe('BaseData["EXT"]', () => {
   type DataType = BaseData['EXT'];
   let data: DataType | undefined;
@@ -135,19 +263,16 @@ describe('BaseData["GENERAL"]', () => {
   const KEYS: DataKey[] = [
     'add_version',
     'avatar',
-    'belong',
     'buryoku',
     'chiryoku',
     'code',
     'cost',
-    'ex_rank',
     'gen_main0',
     'gen_main1',
     'gen_main2',
     'general_type',
     'illustrator',
     'major_version',
-    'not_belong',
     'personal',
     'pocket_avatar',
     'pocket_code',

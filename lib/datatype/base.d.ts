@@ -1,3 +1,32 @@
+interface Assist {
+  add_version: string;
+  assist_strat: string;
+  avatar: string;
+  code: string;
+  illustrator: string;
+  major_version: string;
+  master_player?: string;
+  personal: string;
+  state: string;
+  voice_actor: string;
+}
+
+interface AssistStrat {
+  assist_strat_category: string;
+  code: string;
+  explanation: string;
+  key: string;
+  name: string;
+  name_ruby: string;
+  strat_range: string;
+}
+
+interface AssistStratCategory {
+  code: string;
+  key: string;
+  name: string;
+}
+
 interface ExRank {
   code: string;
   count: string;
@@ -8,19 +37,17 @@ interface ExRank {
 interface General {
   add_version: string;
   avatar: string;
-  belong: number;
   buryoku: string;
   chiryoku: string;
   code: string;
   cost: string;
-  ex_rank: string;
   gen_main0: string;
   gen_main1: string;
   gen_main2: string;
   general_type: string;
   illustrator: string;
   major_version: string;
-  not_belong: boolean;
+  master_player?: string;
   personal: string;
   pocket_avatar: string;
   pocket_code: string;
@@ -135,14 +162,12 @@ interface VoiceActor {
 }
 
 export interface BaseData {
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  ACTIVE_JEWEL: any[];
-  ACTIVE_JEWEL_TYPE: any[];
-  ASSIST: any;
-  ASSIST_STRAT: any;
-  ASSIST_STRAT_CATEGORY: any;
-  BGM: any[];
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  ACTIVE_JEWEL: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ACTIVE_JEWEL_TYPE: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ASSIST: Assist[];
+  ASSIST_STRAT: AssistStrat[];
+  ASSIST_STRAT_CATEGORY: AssistStratCategory[];
+  BGM: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
   COST: {
     [key: number]: { code: string; name: string };
   };
@@ -160,8 +185,8 @@ export interface BaseData {
   ITEM_NAME: any[];
   PARAM: any[];
   PASSIVE_JEWEL: any[];
-  PATH: { [key: string]: string }[];
   /* eslint-enable @typescript-eslint/no-explicit-any */
+  PATH: { [key: string]: string }[];
   PERSONAL: Personal[];
   // PLAYER: any;
   RARITY: {
