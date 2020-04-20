@@ -1,3 +1,14 @@
+interface ActiveJewel {
+  code: string;
+  jewel_type: string;
+  name: string;
+  name_short: string;
+}
+
+interface ActiveJewelType {
+  code: string;
+}
+
 interface Assist {
   add_version: string;
   assist_strat: string;
@@ -25,6 +36,21 @@ interface AssistStratCategory {
   code: string;
   key: string;
   name: string;
+}
+
+interface Bgm {
+  code: string;
+  disp_name: string;
+  full_name: string;
+}
+
+interface Cost {
+  code: string;
+  name: string;
+}
+
+interface CodeOnly {
+  code: string;
 }
 
 interface ExRank {
@@ -75,15 +101,15 @@ interface GenMain {
   key: string;
   name: string;
   name_short: string;
-  replace: string;
+  replace?: string;
 }
 
-interface GenMainSp {
+interface GenMainSP {
   code: string;
   key: string;
   name: string;
   name_short: string;
-  replace: string;
+  replace?: string;
 }
 
 interface GenSub {
@@ -102,6 +128,30 @@ interface Personal {
   azana_ruby: string;
   name: string;
   name_ruby: string;
+}
+
+interface Player {
+  code: string;
+  name: string;
+}
+
+interface Rarity {
+  code: string;
+  name: string;
+  order: number;
+}
+
+interface Rate {
+  fire_enishi_10t: string;
+  fire_pocket_copper: string;
+  fire_pocket_gold: string;
+  fire_pocket_silver: string;
+  general_pickup_point: string;
+  hire_enishi: string;
+  hire_pocket_copper: string;
+  hire_pocket_gold: string;
+  hire_pocket_silver: string;
+  rarity: string;
 }
 
 interface Skill {
@@ -146,6 +196,25 @@ interface StratTime {
   name: string;
 }
 
+interface Tactics {
+  active0: string;
+  active1: string;
+  active2: string;
+  active3: string;
+  active4: string;
+  active5: string;
+  active_slot_num: string;
+  code: string;
+  explanation: string;
+  name: string;
+}
+
+interface TitleGeneral {
+  count: string;
+  key: string;
+  name: string;
+}
+
 interface UnitType {
   code: string;
   key: string;
@@ -162,45 +231,39 @@ interface VoiceActor {
 }
 
 export interface BaseData {
-  ACTIVE_JEWEL: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
-  ACTIVE_JEWEL_TYPE: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  ACTIVE_JEWEL: ActiveJewel[];
+  ACTIVE_JEWEL_TYPE: ActiveJewelType[];
   ASSIST: Assist[];
   ASSIST_STRAT: AssistStrat[];
   ASSIST_STRAT_CATEGORY: AssistStratCategory[];
-  BGM: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
-  COST: {
-    [key: number]: { code: string; name: string };
-  };
-  // DATA: { code: string }[];
+  BGM: Bgm[];
+  COST: { [key: string]: Cost };
+  DATA?: CodeOnly[];
   EXT: { [key: string]: string }[];
   EX_RANK: ExRank[];
   GENERAL: General[];
   GENERAL_TYPE: GeneralType[];
   GEN_MAIN: GenMain[];
-  GEN_MAIN_SP: GenMainSp[];
+  GEN_MAIN_SP: GenMainSP[];
   GEN_SUB: GenSub[];
   ILLUSTRATOR: Illustrator[];
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  ITEM_IMG: any[];
-  ITEM_NAME: any[];
-  PARAM: any[];
-  PASSIVE_JEWEL: any[];
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  ITEM_IMG: { [key: string]: string }[];
+  ITEM_NAME: { [key: string]: string }[];
+  PARAM: { [key: string]: string }[];
+  PASSIVE_JEWEL: GenSub[];
   PATH: { [key: string]: string }[];
   PERSONAL: Personal[];
-  // PLAYER: any;
-  RARITY: {
-    [key: string]: { code: string; name: string; order: number };
-  };
-  RATE: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  PLAYER?: Player[];
+  RARITY: { [key: string]: Rarity };
+  RATE: Rate[];
   SKILL: Skill[];
   STATE: State[];
   STRAT: Strat[];
   STRAT_CATEGORY: StratCategory[];
   STRAT_RANGE: StratRange[];
   STRAT_TIME: StratTime[];
-  TACTICS: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
-  TITLE_GENERAL: any[]; // eslint-disable-line @typescript-eslint/no-explicit-any
+  TACTICS: Tactics[];
+  TITLE_GENERAL: TitleGeneral[];
   UNIT_TYPE: UnitType[];
   VER_TYPE: VerType[];
   VOICE_ACTOR: VoiceActor[];
