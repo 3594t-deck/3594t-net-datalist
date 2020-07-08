@@ -55,20 +55,20 @@ describe('BaseData', () => {
   const IGNORE_KEYS: string[] = ['DATA', 'PLAYER'];
 
   test('no data', async () => {
-    const keys = KEYS.filter(key => !data[key]);
+    const keys = KEYS.filter((key) => !data[key]);
     expect(keys).toEqual([]);
   });
 
   test('added keys', async () => {
     const keys = Object.keys(data).filter(
-      key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
+      (key) => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
     );
     expect(keys).toEqual([]);
   });
 
   test('deleted keys', async () => {
     const keys = KEYS.filter(
-      key => !IGNORE_KEYS.includes(key) && !Object.keys(data).includes(key)
+      (key) => !IGNORE_KEYS.includes(key) && !Object.keys(data).includes(key)
     );
     expect(keys).toEqual([]);
   });
@@ -103,7 +103,7 @@ describe('BaseData["ASSIST"]', () => {
   test('no data', async () => {
     for (const d of data) {
       const keys = KEYS.filter(
-        key => !IGNORE_KEYS.includes(key) && d[key] == null
+        (key) => !IGNORE_KEYS.includes(key) && d[key] == null
       );
       expect(keys).toEqual([]);
     }
@@ -112,7 +112,7 @@ describe('BaseData["ASSIST"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
+        (key) => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -121,7 +121,8 @@ describe('BaseData["ASSIST"]', () => {
   test('deleted keys', async () => {
     for (const d of data) {
       const keys = KEYS.filter(
-        key => !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
+        (key: string) =>
+          !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -148,7 +149,7 @@ describe('BaseData["ASSIST_STRAT"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -156,7 +157,7 @@ describe('BaseData["ASSIST_STRAT"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -164,7 +165,7 @@ describe('BaseData["ASSIST_STRAT"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -181,7 +182,7 @@ describe('BaseData["ASSIST_STRAT_CATEGORY"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -189,7 +190,7 @@ describe('BaseData["ASSIST_STRAT_CATEGORY"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -197,7 +198,7 @@ describe('BaseData["ASSIST_STRAT_CATEGORY"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -232,7 +233,7 @@ describe('BaseData["EX_RANK"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -240,7 +241,7 @@ describe('BaseData["EX_RANK"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -248,7 +249,7 @@ describe('BaseData["EX_RANK"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -300,7 +301,7 @@ describe('BaseData["GENERAL"]', () => {
   test('no data', async () => {
     for (const d of data) {
       const keys = KEYS.filter(
-        key => !IGNORE_KEYS.includes(key) && d[key] == null
+        (key) => !IGNORE_KEYS.includes(key) && d[key] == null
       );
       expect(keys).toEqual([]);
     }
@@ -309,7 +310,7 @@ describe('BaseData["GENERAL"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
+        (key) => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -318,7 +319,7 @@ describe('BaseData["GENERAL"]', () => {
   test('deleted keys', async () => {
     for (const d of data) {
       const keys = KEYS.filter(
-        key => !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
+        (key) => !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -336,7 +337,7 @@ describe('BaseData["GENERAL_TYPE"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -344,7 +345,7 @@ describe('BaseData["GENERAL_TYPE"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -352,7 +353,7 @@ describe('BaseData["GENERAL_TYPE"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -381,7 +382,7 @@ describe('BaseData["COST"]', () => {
     for (const k in data) {
       const d = data[k];
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -390,7 +391,7 @@ describe('BaseData["COST"]', () => {
   test('deleted keys', async () => {
     for (const k in data) {
       const d = data[k];
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -420,7 +421,7 @@ describe('BaseData["RARITY"]', () => {
     for (const k in data) {
       const d = data[k];
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -429,7 +430,7 @@ describe('BaseData["RARITY"]', () => {
   test('deleted keys', async () => {
     for (const k in data) {
       const d = data[k];
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -446,7 +447,7 @@ describe('BaseData["GEN_MAIN"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -454,7 +455,7 @@ describe('BaseData["GEN_MAIN"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -462,7 +463,7 @@ describe('BaseData["GEN_MAIN"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -479,7 +480,7 @@ describe('BaseData["GEN_MAIN_SP"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -487,7 +488,7 @@ describe('BaseData["GEN_MAIN_SP"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -495,7 +496,7 @@ describe('BaseData["GEN_MAIN_SP"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -512,7 +513,7 @@ describe('BaseData["GEN_SUB"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -520,7 +521,7 @@ describe('BaseData["GEN_SUB"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -528,7 +529,7 @@ describe('BaseData["GEN_SUB"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -545,7 +546,7 @@ describe('BaseData["ILLUSTRATOR"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -553,7 +554,7 @@ describe('BaseData["ILLUSTRATOR"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -561,7 +562,7 @@ describe('BaseData["ILLUSTRATOR"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -585,7 +586,7 @@ describe('BaseData["PERSONAL"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -593,7 +594,7 @@ describe('BaseData["PERSONAL"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -601,7 +602,7 @@ describe('BaseData["PERSONAL"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -636,7 +637,7 @@ describe('BaseData["SKILL"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -644,7 +645,7 @@ describe('BaseData["SKILL"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -652,7 +653,7 @@ describe('BaseData["SKILL"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -676,7 +677,7 @@ describe('BaseData["STATE"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -684,7 +685,7 @@ describe('BaseData["STATE"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -692,7 +693,7 @@ describe('BaseData["STATE"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -721,7 +722,7 @@ describe('BaseData["STRAT"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -729,7 +730,7 @@ describe('BaseData["STRAT"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -737,7 +738,7 @@ describe('BaseData["STRAT"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -754,7 +755,7 @@ describe('BaseData["STRAT_CATEGORY"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -762,7 +763,7 @@ describe('BaseData["STRAT_CATEGORY"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -770,7 +771,7 @@ describe('BaseData["STRAT_CATEGORY"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -787,7 +788,7 @@ describe('BaseData["STRAT_RANGE"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -795,7 +796,7 @@ describe('BaseData["STRAT_RANGE"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -803,7 +804,7 @@ describe('BaseData["STRAT_RANGE"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -820,7 +821,7 @@ describe('BaseData["STRAT_TIME"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -828,7 +829,7 @@ describe('BaseData["STRAT_TIME"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -836,7 +837,7 @@ describe('BaseData["STRAT_TIME"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -853,7 +854,7 @@ describe('BaseData["UNIT_TYPE"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -861,7 +862,7 @@ describe('BaseData["UNIT_TYPE"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -869,7 +870,7 @@ describe('BaseData["UNIT_TYPE"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -886,7 +887,7 @@ describe('BaseData["VER_TYPE"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -894,7 +895,7 @@ describe('BaseData["VER_TYPE"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -902,7 +903,7 @@ describe('BaseData["VER_TYPE"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
@@ -919,7 +920,7 @@ describe('BaseData["VOICE_ACTOR"]', () => {
 
   test('no data', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => d[key] == null);
+      const keys = KEYS.filter((key) => d[key] == null);
       expect(keys).toEqual([]);
     }
   });
@@ -927,7 +928,7 @@ describe('BaseData["VOICE_ACTOR"]', () => {
   test('added keys', async () => {
     for (const d of data) {
       const keys = Object.keys(d).filter(
-        key => !(KEYS as string[]).includes(key)
+        (key) => !(KEYS as string[]).includes(key)
       );
       expect(keys).toEqual([]);
     }
@@ -935,7 +936,7 @@ describe('BaseData["VOICE_ACTOR"]', () => {
 
   test('deleted keys', async () => {
     for (const d of data) {
-      const keys = KEYS.filter(key => !Object.keys(d).includes(key));
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
       expect(keys).toEqual([]);
     }
   });
