@@ -29,6 +29,7 @@ interface AssistStrat {
   key: string;
   name: string;
   name_ruby: string;
+  name_ruby_search: string;
   strat_range: string;
 }
 
@@ -126,8 +127,10 @@ interface Illustrator {
 interface Personal {
   azana: string;
   azana_ruby: string;
+  azana_ruby_search: string;
   name: string;
   name_ruby: string;
+  name_ruby_search: string;
 }
 
 interface Player {
@@ -173,10 +176,12 @@ interface State {
 interface Strat {
   code: string;
   explanation: string;
+  explanation_search: string;
   key: string;
   morale: string;
   name: string;
   name_ruby: string;
+  name_ruby_search: string;
   strat_category: string;
   strat_range: string;
   strat_time: string;

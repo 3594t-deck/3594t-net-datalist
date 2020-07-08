@@ -142,6 +142,7 @@ describe('BaseData["ASSIST_STRAT"]', () => {
     'key',
     'name',
     'name_ruby',
+    'name_ruby_search',
     'strat_range',
   ];
 
@@ -573,7 +574,14 @@ describe('BaseData["PERSONAL"]', () => {
     data = baseData.PERSONAL;
   });
   type DataKey = keyof DataType[number];
-  const KEYS: DataKey[] = ['azana', 'azana_ruby', 'name', 'name_ruby'];
+  const KEYS: DataKey[] = [
+    'azana',
+    'azana_ruby',
+    'azana_ruby_search',
+    'name',
+    'name_ruby',
+    'name_ruby_search',
+  ];
 
   test('no data', async () => {
     for (const d of data) {
@@ -700,10 +708,12 @@ describe('BaseData["STRAT"]', () => {
   const KEYS: DataKey[] = [
     'code',
     'explanation',
+    'explanation_search',
     'key',
     'morale',
     'name',
     'name_ruby',
+    'name_ruby_search',
     'strat_category',
     'strat_range',
     'strat_time',
