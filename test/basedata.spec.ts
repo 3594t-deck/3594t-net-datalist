@@ -23,6 +23,7 @@ describe('BaseData', () => {
     'ASSIST_STRAT_CATEGORY',
     'BGM',
     'COST',
+    'DEFAULT_ASSIST',
     'EXT',
     'EX_RANK',
     'GENERAL',
@@ -39,6 +40,7 @@ describe('BaseData', () => {
     'PERSONAL',
     'RARITY',
     'RATE',
+    'SEIATSU',
     'SKILL',
     'STATE',
     'STRAT',
@@ -199,6 +201,52 @@ describe('BaseData["ASSIST_STRAT_CATEGORY"]', () => {
   test('deleted keys', async () => {
     for (const d of data) {
       const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["DEFAULT_ASSIST"]', () => {
+  type DataType = BaseData['DEFAULT_ASSIST'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.DEFAULT_ASSIST;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = [
+    'assist_strat_category_name',
+    'assist_strat_name',
+    'avatar',
+    'code',
+    'name',
+  ];
+
+  const IGNORE_KEYS: string[] = [];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(
+        (key) => !IGNORE_KEYS.includes(key) && d[key] == null
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        (key) => !IGNORE_KEYS.includes(key) && !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter(
+        (key: string) =>
+          !IGNORE_KEYS.includes(key) && !Object.keys(d).includes(key)
+      );
       expect(keys).toEqual([]);
     }
   });
@@ -582,6 +630,7 @@ describe('BaseData["PERSONAL"]', () => {
     'name',
     'name_ruby',
     'name_ruby_search',
+    'same_person_idx',
   ];
 
   test('no data', async () => {
@@ -622,6 +671,39 @@ describe('BaseData["PATH"]', () => {
   test('format', async () => {
     for (const d in data[0]) {
       expect(d).toEqual(expect.any(String));
+    }
+  });
+});
+
+describe('BaseData["SEIATSU"]', () => {
+  type DataType = BaseData['SEIATSU'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.SEIATSU;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['threshold'];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter((key) => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        (key) => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
     }
   });
 });

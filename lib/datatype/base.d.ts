@@ -54,6 +54,14 @@ interface CodeOnly {
   code: string;
 }
 
+interface DefaultAssist {
+  assist_strat_category_name: string;
+  assist_strat_name: string;
+  avatar: string;
+  code: string;
+  name: string;
+}
+
 interface ExRank {
   code: string;
   count: string;
@@ -131,6 +139,7 @@ interface Personal {
   name: string;
   name_ruby: string;
   name_ruby_search: string;
+  same_person_idx: string;
 }
 
 interface Player {
@@ -155,6 +164,10 @@ interface Rate {
   hire_pocket_gold: string;
   hire_pocket_silver: string;
   rarity: string;
+}
+
+interface Seiatsu {
+  threshold: string;
 }
 
 interface Skill {
@@ -244,6 +257,7 @@ export interface BaseData {
   BGM: Bgm[];
   COST: { [key: string]: Cost };
   DATA?: CodeOnly[];
+  DEFAULT_ASSIST: DefaultAssist[];
   EXT: { [key: string]: string }[];
   EX_RANK: ExRank[];
   GENERAL: General[];
@@ -261,6 +275,7 @@ export interface BaseData {
   PLAYER?: Player[];
   RARITY: { [key: string]: Rarity };
   RATE: Rate[];
+  SEIATSU: Seiatsu[];
   SKILL: Skill[];
   STATE: State[];
   STRAT: Strat[];
