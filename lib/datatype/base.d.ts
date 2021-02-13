@@ -81,6 +81,8 @@ interface General {
   gen_main2: string;
   general_type: string;
   illustrator: string;
+  isai_point?: string;
+  isai_point_disabled?: string;
   major_version: string;
   master_player?: string;
   personal: string;
@@ -130,6 +132,11 @@ interface GenSub {
 interface Illustrator {
   idx: string;
   name: string;
+}
+
+interface Isai {
+  ceil: string;
+  level: string;
 }
 
 interface Personal {
@@ -266,6 +273,7 @@ export interface BaseData {
   GEN_MAIN_SP: GenMainSP[];
   GEN_SUB: GenSub[];
   ILLUSTRATOR: Illustrator[];
+  ISAI: Isai[];
   ITEM_IMG: { [key: string]: string }[];
   ITEM_NAME: { [key: string]: string }[];
   PARAM: { [key: string]: string }[];

@@ -34,6 +34,7 @@ describe('BaseData', () => {
     'ILLUSTRATOR',
     'ITEM_IMG',
     'ITEM_NAME',
+    'ISAI',
     'PARAM',
     'PASSIVE_JEWEL',
     'PATH',
@@ -322,6 +323,8 @@ describe('BaseData["GENERAL"]', () => {
     'gen_main2',
     'general_type',
     'illustrator',
+    'isai_point',
+    'isai_point_disabled',
     'major_version',
     'personal',
     'pocket_avatar',
@@ -591,6 +594,39 @@ describe('BaseData["ILLUSTRATOR"]', () => {
   });
   type DataKey = keyof DataType[number];
   const KEYS: DataKey[] = ['idx', 'name'];
+
+  test('no data', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter((key) => d[key] == null);
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('added keys', async () => {
+    for (const d of data) {
+      const keys = Object.keys(d).filter(
+        (key) => !(KEYS as string[]).includes(key)
+      );
+      expect(keys).toEqual([]);
+    }
+  });
+
+  test('deleted keys', async () => {
+    for (const d of data) {
+      const keys = KEYS.filter((key) => !Object.keys(d).includes(key));
+      expect(keys).toEqual([]);
+    }
+  });
+});
+
+describe('BaseData["ISAI"]', () => {
+  type DataType = BaseData['ISAI'];
+  let data: DataType | undefined;
+  beforeEach(() => {
+    data = baseData.ISAI;
+  });
+  type DataKey = keyof DataType[number];
+  const KEYS: DataKey[] = ['ceil', 'level'];
 
   test('no data', async () => {
     for (const d of data) {
